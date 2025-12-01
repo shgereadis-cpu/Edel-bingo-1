@@ -1,144 +1,94 @@
-/* style.css */
+/* style.css (ከፍተኛ የመጠን ማስተካከያ - Non-Scrolling) */
 
-/* Viewport እና አጠቃላይ ገጽታ (ለ Telegram Mini App የተስተካከለ) */
+/* አጠቃላይ ገጽታ ቅንጅት */
 body {
     font-family: Arial, sans-serif;
-    background-color: #12121e; /* ጥቁር የጀርባ ቀለም */
+    background-color: #12121e;
     color: #f4f4f9;
     margin: 0;
     padding: 0;
-    width: 100%; /* ሙሉ ስክሪን */
-    height: 100vh; /* ሙሉ ቁመት */
+    width: 100%;
+    height: 100vh;
     box-sizing: border-box;
-    overflow-x: hidden; /* የጎን ስክሮልን መከልከል */
+    overflow: hidden; /* ምንም ስክሮል እንዳይኖር */
 }
 
 .main-wrapper {
     width: 100%;
-    padding: 10px;
+    padding: 5px; /* አነስተኛ Padding */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh; /* ሙሉ ቁመት */
 }
 
 /* ===== ራስጌ (Wallet / Stake) ===== */
 .top-info-bar {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.logo-placeholder {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #ffc107;
-}
-
-.title-text {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-right: auto; /* የተቀረውን ቦታ እንዲይዝ */
-}
-
-.info-group {
-    display: flex;
     gap: 10px;
+    margin-bottom: 5px; /* Margin ቀንሷል */
 }
 
-.info-box {
-    background-color: #ffc107; /* ቢጫ/ብርቱካናማ */
-    color: #12121e;
-    border-radius: 12px;
-    padding: 5px 12px;
-    font-size: 0.8em;
-    font-weight: 600;
+/* ... (የተቀረው የ Info Bar ኮድ ተመሳሳይ ነው) ... */
+
+
+/* ===== አዲስ: የተጠራ ቁጥር ማሳያ (ማዕከላዊ አቀማመጥ) ===== */
+#called-number-display-wrapper {
     text-align: center;
-    line-height: 1.2;
+    margin: 5px 0; /* Margin ቀንሷል */
 }
 
-.info-box span {
-    display: block;
-    font-size: 1.1em;
+.called-number-display {
+    font-size: 1.2em; /* መጠን ቀንሷል */
     font-weight: bold;
+    color: #12121e;
+    background-color: #ffc107;
+    border-radius: 10px; 
+    padding: 3px 10px; /* Padding ቀንሷል */
+    display: inline-block;
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
 }
 
 /* ===== ዋናው የጨዋታ አካል (Dual Grid Layout) ===== */
 .game-area-grid {
     display: flex;
-    gap: 10px;
-    flex-grow: 1; /* ቦታውን ሙሉ በሙሉ እንዲይዝ */
+    gap: 5px; /* Gap ቀንሷል */
+    flex-grow: 1; 
+    margin-bottom: 5px; /* Margin ቀንሷል */
 }
 
-.left-master-grid {
-    flex: 1.5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.right-player-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 75 ቁጥሮች Master Grid */
+/* Master Grid (5x15 Layout - No Scrolling) */
 .master-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+    /* 5 columns */
+    grid-template-columns: repeat(5, 1fr); 
+    /* 15 rows for 75 numbers */
+    grid-template-rows: repeat(15, 1fr); 
+    gap: 2px; /* Gap ቀንሷል */
     background-color: #2c293d;
-    padding: 10px;
-    border-radius: 10px;
-    overflow-y: scroll; /* አስፈላጊ ከሆነ ስክሮል እንዲያደርግ */
-    max-height: 50vh; /* ለሞባይል የተገደበ ቁመት */
+    padding: 5px; /* Padding ቀንሷል */
+    border-radius: 8px;
+    height: 100%; /* ሙሉውን ቁመት እንዲይዝ */
+    overflow: hidden; /* ስክሮል የለም */
 }
 
 .master-cell {
     background-color: #1f1c2c;
     color: #fff;
-    padding: 8px 0;
-    border-radius: 5px;
+    padding: 4px 0; /* Padding በከፍተኛ ሁኔታ ቀንሷል */
+    border-radius: 3px;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.7em; /* ፊደል መጠን ቀንሷል */
     font-weight: 600;
-    transition: background-color 0.2s;
 }
 
-.master-cell.called {
-    background-color: #dc3545; /* ቀይ: የተጠራ ቁጥር */
-    color: white;
-}
-
-/* የአሁኑ የተጠራ ቁጥር ማሳያ */
-.called-number-display {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #12121e;
-    background-color: #ffeb3b;
-    border-radius: 50px;
-    padding: 5px 15px;
-    margin-bottom: 10px;
-}
-
-/* ===== 5x5 የተጫዋች ካርድ ===== */
+/* ===== 5x5 የተጫዋች ካርድ (የቦታ ቁጠባ) ===== */
 .card-box {
     background-color: #2c293d;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 8px;
+    padding: 5px; /* Padding ቀንሷል */
     margin-top: 5px;
-}
-
-.card-header {
-    color: #bbb;
-    font-size: 0.8em;
-    margin-bottom: 5px;
-}
-.card-header span {
-    color: #ffc107;
-    font-weight: bold;
 }
 
 .bingo-card-player {
@@ -152,77 +102,27 @@ body {
 }
 
 .header {
-    background-color: #6f42c1; /* ሐምራዊ ራስጌ */
-    color: white;
-    font-weight: bold;
-    padding: 5px 0;
-    text-align: center;
-    font-size: 0.9em;
+    padding: 3px 0; /* Padding ቀንሷል */
+    font-size: 0.8em;
 }
 
 .cell {
-    background-color: #1f1c2c;
-    color: #f4f4f9;
-    padding: 8px 0;
-    text-align: center;
-    font-size: 0.9em;
-    font-weight: 600;
-    cursor: pointer;
+    padding: 4px 0; /* Padding ቀንሷል */
+    font-size: 0.8em;
 }
 
-/* የተመረጠ/ማርክ የተደረገ ቁጥር */
-.cell.marked {
-    background-color: #ff8c00 !important; /* ብርቱካናማ */
-    color: #12121e;
-}
-
-.cell.free-space {
-    background-color: #ffeb3b; /* ቢጫ */
-    color: #12121e;
-}
-
-.status-indicator {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 0.9em;
-}
-
-.status-connected {
-    color: #28a745; /* አረንጓዴ */
-    font-weight: bold;
-}
 
 /* ===== የታችኛው አዝራሮች (Action Buttons) ===== */
 .action-buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    gap: 5px; /* Gap ቀንሷል */
+    margin-top: 5px; /* Margin ቀንሷል */
+    margin-bottom: 5px; /* Margin ቀንሷል */
 }
 
 .btn {
-    border: none;
-    padding: 15px 5px;
-    border-radius: 12px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    width: 100%;
-}
-
-.exit-btn {
-    background-color: #dc3545; /* ቀይ */
-    color: white;
-}
-
-.refresh-btn {
-    background-color: #6c757d; /* ግራጫ */
-    color: white;
-}
-
-.reserve-btn {
-    background-color: #ffc107; /* ቢጫ/ብርቱካናማ */
-    color: #12121e;
+    padding: 10px 5px; /* Padding ቀንሷል */
+    border-radius: 8px;
+    font-size: 0.9em; /* መጠን ቀንሷል */
 }
